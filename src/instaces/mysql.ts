@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize';
 import 'dotenv/config'
-
+// instanciando o mysql
 export const sequelize = new Sequelize(
     process.env.MYSQL_DB as string,
     process.env.MYSQL_USER as string,
