@@ -3,7 +3,7 @@ import * as AdsController from '../controllers/AdsController';
 import * as AuthController from '../controllers/AuthController';
 import * as UserController from '../controllers/UserController';
 import { privateAuth } from '../middleware/Auth';
-import { signup } from '../validators/AuthValidator';
+import * as AuthValidator from '../validators/AuthValidator';
 
 const router = Router();
 
@@ -16,10 +16,10 @@ router.get("/ping", (req: Request, res: Response) => {
 router.get("/states",UserController.getStates);
 
 //login
-router.post("/user/signin", AuthController.signin);
+router.post("/user/signin", AuthValidator.signin,AuthController.signin);
 
 //cadrastro
-router.post("/user/signup", signup,AuthController.signup);
+router.post("/user/signup", AuthValidator.signup,AuthController.signup);
 
 //informaçoes do proprio usuario
 router.get("/user/me", privateAuth,UserController.info);

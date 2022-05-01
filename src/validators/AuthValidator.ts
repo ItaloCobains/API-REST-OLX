@@ -26,4 +26,18 @@ export const signup = checkSchema({
         notEmpty: true,
         errorMessage: "Estado não preenchido"
     }
-})
+});
+
+export const signin = checkSchema({
+    email: {
+        isEmail: true,
+        normalizeEmail: true,
+        errorMessage: "E-mail inválido."
+    },
+    password: {
+        isLength: {
+            options: { min: 5 }
+        },
+        errorMessage: "Senha precisa ter pelo menos 5 caracteres."
+    },
+});
