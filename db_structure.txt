@@ -1,0 +1,30 @@
+users 
+- _id
+- name
+- email
+- state
+- passwordHash
+- token
+
+states
+- _id
+- name
+
+categories
+- _id
+- name
+- slug
+
+ads
+- _id
+- idUser
+- state
+- category
+- imagens (vai ser uma string com url, default, (url, true))
+- dateCreated
+- title
+- price
+- priceNegotiable (bool)
+- description
+- views
+- status
