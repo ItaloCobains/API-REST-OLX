@@ -3,6 +3,7 @@ import * as AdsController from '../controllers/AdsController';
 import * as AuthController from '../controllers/AuthController';
 import * as UserController from '../controllers/UserController';
 import { privateAuth } from '../middleware/Auth';
+import { signup } from '../validators/AuthValidator';
 
 const router = Router();
 
@@ -18,7 +19,7 @@ router.get("/states",UserController.getStates);
 router.post("/user/signin", AuthController.signin);
 
 //cadrastro
-router.post("/user/signup", AuthController.signup);
+router.post("/user/signup", signup,AuthController.signup);
 
 //informaçoes do proprio usuario
 router.get("/user/me", privateAuth,UserController.info);

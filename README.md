@@ -15,6 +15,7 @@ Projeto OLX, criando uma api rest para o OLX, projeto fictício
     - sequelize
     - validator
     - @types/express-fileupload
+    - express-validator
 
 ## devDependencies
     - nodemon
