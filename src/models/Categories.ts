@@ -1,25 +1,29 @@
-import { Model, DataTypes } from 'sequelize';
-import { sequelize } from '../instaces/mysql';
+import { Model, DataTypes } from "sequelize";
+import { sequelize } from "../instaces/mysql";
 
 export interface CategoryInstance extends Model {
-    id: number,
-    name: string,
-    slug: string
-};
+  id: number;
+  name: string;
+  slug: string;
+}
 
-export const Category = sequelize.define<CategoryInstance>('Category', {
+export const Category = sequelize.define<CategoryInstance>(
+  "Category",
+  {
     id: {
-        primaryKey: true,
-        autoIncrement: true,
-        type: DataTypes.INTEGER
+      primaryKey: true,
+      autoIncrement: true,
+      type: DataTypes.INTEGER,
     },
     name: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
-    slug:{
-        type: DataTypes.STRING
-    }
-}, {
-    tableName: 'categories',
-    timestamps: false
-});
+    slug: {
+      type: DataTypes.STRING,
+    },
+  },
+  {
+    tableName: "categories",
+    timestamps: false,
+  },
+);

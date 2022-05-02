@@ -1,61 +1,65 @@
-import { Model, DataTypes } from 'sequelize';
-import { sequelize } from '../instaces/mysql';
+import { Model, DataTypes } from "sequelize";
+import { sequelize } from "../instaces/mysql";
 
 export interface AdsInstance extends Model {
-    id: number,
-    idUser: string,
-    state: string,
-    category: string,
-    images: [Object],
-    dataCreated: Date,
-    title: string,
-    price: number,
-    priceNegotiable: boolean,
-    description: string,
-    views: number,
-    status: String
-};
+  id: number;
+  idUser: string;
+  state: string;
+  category: string;
+  images: [Object];
+  dataCreated: Date;
+  title: string;
+  price: number;
+  priceNegotiable: boolean;
+  description: string;
+  views: number;
+  status: String;
+}
 
-export const Ads = sequelize.define<AdsInstance>('Ads', {
+export const Ads = sequelize.define<AdsInstance>(
+  "Ads",
+  {
     id: {
-        primaryKey: true,
-        autoIncrement: true,
-        type: DataTypes.INTEGER
+      primaryKey: true,
+      autoIncrement: true,
+      type: DataTypes.INTEGER,
     },
     idUser: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     state: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     category: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     images: {
-        type: DataTypes.BLOB
+      type: DataTypes.BLOB,
     },
     dataCreated: {
-        type: DataTypes.DATE
+      type: DataTypes.DATE,
     },
     title: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     price: {
-        type: DataTypes.NUMBER
+      type: DataTypes.NUMBER,
     },
-    priceNegotiable:{
-        type: DataTypes.BOOLEAN
+    priceNegotiable: {
+      type: DataTypes.BOOLEAN,
     },
     description: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     views: {
-        type: DataTypes.NUMBER
+      type: DataTypes.NUMBER,
     },
-    status:{
-        type: DataTypes.STRING
-    }
-}, {
-    tableName: 'ads',
-    timestamps: false
-});
+    status: {
+      type: DataTypes.STRING,
+    },
+  },
+  {
+    tableName: "ads",
+    timestamps: false,
+  },
+);

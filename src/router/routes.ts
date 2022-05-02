@@ -1,28 +1,29 @@
-import { Router, Request, Response } from 'express';
-import * as AdsController from '../controllers/AdsController';
-import * as AuthController from '../controllers/AuthController';
-import * as UserController from '../controllers/UserController';
-import { privateAuth } from '../middleware/Auth';
-import * as AuthValidator from '../validators/AuthValidator';
+import { Router, Request, Response } from "express";
+import { privateAuth } from "../middleware/Auth";
+
+import * as AdsController from "../controllers/AdsController";
+import * as AuthController from "../controllers/AuthController";
+import * as UserController from "../controllers/UserController";
+import * as AuthValidator from "../validators/AuthValidator";
 
 const router = Router();
 
 // rota de teste
 router.get("/ping", (req: Request, res: Response) => {
-    res.json({ pong: true });
+  res.json({ pong: true });
 });
 
 // pegar os estados
-router.get("/states",UserController.getStates);
+router.get("/states", UserController.getStates);
 
 //login
-router.post("/user/signin", AuthValidator.signin,AuthController.signin);
+router.post("/user/signin", AuthValidator.signin, AuthController.signin);
 
 //cadrastro
-router.post("/user/signup", AuthValidator.signup,AuthController.signup);
+router.post("/user/signup", AuthValidator.signup, AuthController.signup);
 
 //informaçoes do proprio usuario
-router.get("/user/me", privateAuth,UserController.info);
+router.get("/user/me", privateAuth, UserController.info);
 
 //editar informaçoes do proprio user
 router.put("/user/me", privateAuth, UserController.editAction);
