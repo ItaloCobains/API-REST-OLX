@@ -24,6 +24,7 @@ Projeto OLX, criando uma api rest para o OLX, projeto fictício
     - @types/express
     - @types/nodemon
     - @types/sequelize
+    - @types/node
 
 ### Para instalar os Dependencies
 ```
