@@ -39,6 +39,9 @@ Com o arquivo .env.example, renomeie o mesmo para .env e preencha as informaçõ
 # APP
 PORT=
 
+#url nativa, exemplo: http://localhost:5000
+BASE=
+
 # MYSQL
 MYSQL_DB=
 MYSQL_USERNAME=
@@ -51,6 +54,7 @@ Tenha em mente que você possua:
     - Um editor de código
     - NodeJS
     - Servidor MySQL ( Caso for rodar nativamente )
+
 
 ### Rodando Nativamente 🌅
 
