@@ -8,3 +8,9 @@ export const getAdsByIdUser = async (id:number|undefined) => {
     })
     return ads;
 }
+
+
+export const FindForStatus = async (status: boolean) => {
+    const AdsData = await Ads.findOne({ where:{ status:status } });
+    return AdsData;
+}   

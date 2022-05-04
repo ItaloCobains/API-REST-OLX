@@ -13,7 +13,7 @@ export interface AdsInstance extends Model {
     priceNegotiable: boolean,
     description: string,
     views: number,
-    status: String
+    status: boolean
 };
 
 export const Ads = sequelize.define<AdsInstance>('Ads', {
@@ -53,7 +53,7 @@ export const Ads = sequelize.define<AdsInstance>('Ads', {
         type: DataTypes.NUMBER
     },
     status:{
-        type: DataTypes.STRING
+        type: DataTypes.BOOLEAN
     }
 }, {
     tableName: 'ads',

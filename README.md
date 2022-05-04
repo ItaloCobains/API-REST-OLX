@@ -92,3 +92,7 @@ Depois que o merge da sua pull request for feito, você pode deletar a sua branc
 ### 🔖 Licença
 
 Caso queira conferir a licença do projeto, só olhar esse arquivo [LICENSE](./LICENSE)
+
+### 🤔 Errors
+
+- Não consegui adicionar foto no banco de dados na rota ad/add pois meu uuid estava dando erro.
