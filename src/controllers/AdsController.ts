@@ -87,24 +87,81 @@ export const addAction = async (req: Request, res: Response) => {
 export const getList = async (req: Request, res: Response) => {
     let { sort = 'asc', offset = 0, limit = 8, q, cat, state } = req.query;
     const adsData = await AdsService.FindForStatus(true);
-    let ads= [];
-    
+    let ads = [];
+
     ads.push({
-        id:adsData?.id,
+        id: adsData?.id,
         title: adsData?.title,
         price: adsData?.price,
         priceNegotiable: adsData?.priceNegotiable,
     })
-    
+
     res.json({
         ads
     })
 };
 
 export const getItem = async (req: Request, res: Response) => {
-    
+    const { id } = req.query;
+
+    if (!id) {
+        res.json({ error: "Json sem produto" });
+        return;
+    }
+    const ad = await AdsService.getAdsById(id as string);
+    if (!ad) {
+        res.json({ erro: "produto inexistente" });
+        return;
+    }
+
+    // ad.views++;
+    await ad.save;
+
+    res.json({
+        id: ad.id,
+        title: ad.title,
+        price: ad.price,
+        priceNegotiable: ad.priceNegotiable,
+        description: ad.description,
+        dateCreated: ad.dataCreated,
+        // views: ad.views
+    })
 };
 
-export const editAction = async (req: Request, res: Response) => {
 
+export const editAction = async (req: Request, res: Response) => {
+    let { id } = req.params;
+    let { title, status, price, priceNegotiable, desc, token } = req.body;
+
+    const ad = await AdsService.getAdsById(id)
+
+    if (!ad) {
+        res.json({ error: "anuncio nao existente" })
+        return;
+    }
+
+    const user = await UserService.findByToken(token);
+    if(user?.id.toString() !== ad.idUser){
+        res.json({error:"Este anuncio nao e seu"});
+        return;
+    }
+
+
+    if(title){
+        await AdsService.FindByTokenAndUpdateTitle(token, title)
+    }
+    if(price){
+        await AdsService.FindByTokenAndUpdatePrice(token, price)
+    }
+    if(priceNegotiable){
+        await AdsService.FindByTokenAndUpdatePriceNego(token, priceNegotiable)
+    }
+    if(status){
+        await AdsService.FindByTokenAndUpdateStatus(token, status);
+    }
+    if(desc){
+        await AdsService.FindByTokenAndUpdateDesc(token, desc);
+    }
+
+    
 };
