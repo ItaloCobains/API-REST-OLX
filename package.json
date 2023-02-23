@@ -20,7 +20,7 @@
     "express-validator": "^6.14.0",
     "jimp": "^0.16.1",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.19.0",
+    "sequelize": "^6.28.2",
     "sharp": "^0.30.4",
     "ts-node": "^10.7.0",
     "typescript": "^4.6.4",
